@@ -67,20 +67,9 @@ void hal_ad5293_spi_update_dig_pot(SPI_HandleTypeDef *hspi1, uint16_t value, uin
 	transmit.asInteger = AD529X_WRITE_TO_RDAC | (value & 0x3FF);
 	hal_ad5293_spi_transmit(hspi1, &transmit, 2, AD5293_TIMEOUT, dig_pot_num);
 
-//	// lock internal register back
-//	transmit.asInteger = AD5293_WRITE_CONTROL | AD5293_RESISTOR_LOCKED_MODE;
-//	hal_ad5293_spi_transmit(hspi1, &transmit, 2, AD5293_TIMEOUT);
-
-	// transmit.asInteger = AD5293_NOP;
-	// hal_ad5293_spi_transmit(hspi1, &transmit, 2, AD5293_TIMEOUT, dig_pot_num);
-
 }
 
 void hal_ad5293_SPI6_Init(SPI_HandleTypeDef *hspi) {
-	// if (HAL_SPI_DeInit(hspi) != HAL_OK)
-	// {
-	// 	Error_Handler(83);
-	// }
 	hspi->Instance = SPI6;
 	hspi->Init.Mode = SPI_MODE_MASTER;
 	hspi->Init.Direction = SPI_DIRECTION_2LINES;
