@@ -1,0 +1,61 @@
+syntax = "proto2";
+
+enum CommandName {
+  WRITE_CFG_DAC = 0;
+  READ_SS_ADC = 1;
+  WRITE_SEL = 2;
+}
+
+enum ChannelNum {
+  CHANNEL_NUM_0 = 0;
+  CHANNEL_NUM_1 = 1;
+  CHANNEL_NUM_2 = 2;
+  CHANNEL_NUM_3 = 3;
+  CHANNEL_NUM_ALL = 4;
+}
+
+enum SelNum {
+  SEL_NUM_1 = 0;
+  SEL_NUM_2 = 1;
+}
+
+enum LogicVal {
+  LOGIC_0 = 0;
+  LOGIC_1 = 1;
+}
+
+message Command {
+  optional CommandName name = 1;
+  optional DacState dac_state = 2;
+  optional AdcState adc_state = 3;
+  optional SelState sel_state = 4;
+  optional Error error = 5;
+}
+
+message DacState {
+  optional ChannelNum channel = 1;
+  optional float value = 2;
+}
+
+message SelState {
+  optional SelNum num = 1;
+  optional LogicVal val = 2;
+}
+
+message AdcState {
+  optional ChannelNum channel = 1;
+  optional int32 value = 2;
+}
+
+message Error {
+  required ErrorCode code = 1;
+  optional string message = 2;
+}
+
+enum ErrorCode {
+  OK = 0;
+  CRC = 1;
+  DECODING = 2;
+  OUT_OF_RANGE = 3;
+  MISSING_PARAMETER = 4;
+}
