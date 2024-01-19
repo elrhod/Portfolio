@@ -1,12 +1,14 @@
+This Python module is here as part of a portfolio demonstration and will not work as a stand-alone application os used as a module.
+
 # Sysboard DAC ADC
 
-This module can be used to control the Sysboard ADCs and DAC using python.
+This module can be used to control the Sysboard ADCs and DAC using Python.
 
 # Installation
-The easiest way to install is to clone the repository and use pip to do an editable install. For example from within a virutal environment with pip installed, the following commands would install the package:
+The easiest way to install is to clone the repository and use pip to do an editable install. For example from within a virtual environment with pip installed, the following commands would install the package:
 
 ``` bash
-$ git clone git@github.com:illusense/illu-sysb-dacadc.git
+$ git clone <git@github.com:illusense/illu-sysb-dacadc.git>
 $ cd illu-sysb-dacadc
 $ pip install -e .
 ```
@@ -14,7 +16,7 @@ Now the package is available for import, and any changes made to the local sourc
 
 ## Generating the protobuf extensions
 
-The Sysbdacadc class makes use of a protocol buffers definition defined in `sysb-dacadc.proto`. If this definition is changed, the corresponding python and/or C code can be regenerated using the included `setup.py` build commands:
+The Sysbdacadc class makes use of a protocol buffers definition defined in `sysb-dacadc.proto`. If this definition is changed, the corresponding Python and/or C code can be regenerated using the included `setup.py` build commands:
 
 ``` bash
 $ python setup.py proto_build --build-all
