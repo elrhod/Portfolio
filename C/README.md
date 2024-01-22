@@ -7,7 +7,7 @@ This bash script updates the firmware with the latest commit short SHA signature
 This is the makefile used to generate the programming file and program the system board.
 
 ## STM32H735ZGTX_FLASH.ld
-This is an example of a linker file created by the STM32CubeIDE and modified by me to add the DMA buffer regions to support DMA data transmission between specific peripherals and memory.
+This is an example of a linker file created by the STM32CubeIDE and modified by me to add the DMA buffer regions to support DMA data transfer between specific peripherals and memory.
 
 ## ad9528_stm32_hal (.c and .h)
 These codes present a hardware abstraction layer of the PLL IC (AD9528).
