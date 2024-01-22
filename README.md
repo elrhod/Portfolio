@@ -1,5 +1,5 @@
 # Portfolio
-This repository presents some code snippets developed by me from 2019 to 2023. Codes are divided into folders according to the programming language.
+This repository presents some code snippets and files developed by me from 2019 to 2023. Codes are divided into folders according to the programming language.
 
 ## C 
 The folder presents C functions that can be described as drivers or hardware abstraction layers between the main MCU and peripheral components. The folder also presents an example of Makefile and a bash script used to perform automatic code modifications. More details can be found in the folder.
