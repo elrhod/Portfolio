@@ -8,7 +8,7 @@ This bash script updates the firmware with the latest commit short SHA signature
 This is the makefile used to generate the programming file and program the system board.
 
 ## cmd_handle.c
-This code snippet is part of a command handle function that does three functions:
+This code snippet is part of a command handle function divided in three steps:
 - Check if the input parameters are between accepted bounds;
 - If the bounds checking is OK, call the specific handling function that will perform the action required by the user;
 - Transmit the reply command to the user;
