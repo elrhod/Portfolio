@@ -2,7 +2,7 @@
 
   switch(command.name) {
   case CommandName_GALVO_SET_STATE:
-    // strcpy(reply.error.message, "GALVO_SET_STATE");
+    
     reply.error.has_message = 1;
 
     if (command.galvo_state.has_ampx) {
@@ -12,7 +12,7 @@
         received_params.galvox_field_of_view = command.galvo_state.ampx;
       }
       Illu_dbg_cmd_msg("CMD:GALVO X FOV CHANGED");
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
+      
     }
 
     if (command.galvo_state.has_ampy) {
@@ -21,7 +21,7 @@
       } else {
         received_params.galvoy_field_of_view = command.galvo_state.ampy;
       }
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
+      
       Illu_dbg_cmd_msg("CMD:GALVO Y FOV CHANGED");
     }
 
@@ -31,7 +31,7 @@
       } else {
         received_params.galvox_field_of_view_offset = command.galvo_state.offsetx;
       }
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
+      
       Illu_dbg_cmd_msg("CMD:GALVO X OFFSET CHANGED");
     }
 
@@ -41,8 +41,8 @@
       } else {
         received_params.galvoy_field_of_view_offset = command.galvo_state.offsety;
       }
+      
       Illu_dbg_cmd_msg("CMD:GALVO Y OFFSET CHANGED");
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
     }
 
     if (command.galvo_state.has_waveformx) {
@@ -60,8 +60,6 @@
         Illu_Set_Error(&reply.error, ErrorCode_OUT_OF_RANGE);
       }
       Illu_dbg_cmd_msg("CMD:GALVO X WAVEFORM CHANGED");
-
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
     }
 
     if (command.galvo_state.has_waveformy) {
@@ -86,7 +84,6 @@
           break;
         }
 
-        // int y_galvo_custom_settings_t[3][2]={{15,5},{70,90},{15,5}};
         for (size_t i = 0; i < received_params.y_galvo_custom_settings_size; i++) {
           for (size_t j = 0; j < 2; j++) {
             received_params.y_galvo_custom_settings[i][j] = command.galvo_state.y_galvo_distribution[i*2+j];
@@ -99,7 +96,6 @@
         break;
       }
       Illu_dbg_cmd_msg("CMD:GALVO Y WAVEFORM CHANGED");
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
     }
 
     if (command.galvo_state.has_horizontal_sweeps) {
@@ -108,7 +104,7 @@
       } else {
         received_params.lines_per_frame = command.galvo_state.horizontal_sweeps;
       }
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
+
       Illu_dbg_cmd_msg("CMD:NUM OF LINES CHANGED");
     }
 
@@ -118,7 +114,7 @@
       } else {
         received_params.galvox_phase_shift = command.galvo_state.galvox_phase_shift;
       }
-      // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
+
       Illu_dbg_cmd_msg("CMD:GALVO X PHASE SHIFT");
     }
 
@@ -143,7 +139,6 @@
         }
         updated_params.y_galvo_custom_settings_size = received_params.y_galvo_custom_settings_size;
 
-        // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
         if (first_time) {
           Illu_Run_Configuration(GALVOS);
           Illu_dbg_cmd_msg("CMD:______________START SCAN");
@@ -158,9 +153,6 @@
           }
         }
       } else {
-        // it is stopped at the end of the frame
-        // Illu_set_EDFA_Current(0);
-        // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
         Illu_Stop_Configuration(GALVOS);
         Illu_dbg_cmd_msg("CMD:STOP SCAN______________");
       }
@@ -169,7 +161,6 @@
     break;
 
   case CommandName_UPP_SET_STATE:
-    // strcpy(reply.error.message, "UPP_SET_STATE");
     reply.error.has_message = 1;
 
       if (command.upp_state.has_burst_count) {
@@ -218,7 +209,6 @@
     break;
 
   case CommandName_IQ_GET_STATE:
-    // strcpy(reply.error.message, "IQ_GET_STATE");
     reply.error.has_message = 1;
 
     reply.has_iq0_state= 1;  // do I need this???
@@ -237,14 +227,12 @@
     reply.iq0_state.has_phase_voltage =1;
     reply.iq0_state.has_bias1_voltage =1;
     reply.iq0_state.has_bias2_voltage =1;
-    // reply.iq0_state.iteration = iq0.iteration;
-    // reply.iq0_state.has_iteration = 1;
+
     xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
     Illu_dbg_cmd_msg("CMD:IQ_GET_STATE");
     break;
 
   case CommandName_IQ_SET_STATE:
-    // strcpy(reply.error.message, "IQ_SET_STATE");
     reply.error.has_message = 1;
 
       if (fabs(command.iq0_state.bias1_voltage) > 8 ||
@@ -282,8 +270,7 @@
         }
 
         if (command.iq0_state.has_bias1_voltage) {
-          // TODO: check the voltage conversion iq1 bias1_voltage
-          output_value = ((uint16_t) ((offset+command.iq0_state.bias1_voltage)*convertion_constant))<<4;
+           output_value = ((uint16_t) ((offset+command.iq0_state.bias1_voltage)*convertion_constant))<<4;
         	hal_ltc2668_spi_write_code(&hspi6, output_value, DAC_DAC14_ADDRESS, DAC_WRITE_REGA);
           hal_ltc2668_spi_update_dac(&hspi6, DAC_DAC14_ADDRESS);
           current_value_bias1 = command.iq0_state.bias1_voltage;
@@ -292,7 +279,6 @@
           is_lock_coarse =1;
         }
         if (command.iq0_state.has_bias2_voltage) {
-          // TODO: check the voltage conversion iq0 bias2_voltage
           output_value = ((uint16_t) ((offset+command.iq0_state.bias2_voltage)*convertion_constant))<<4;
           hal_ltc2668_spi_write_code(&hspi6, output_value, DAC_DAC13_ADDRESS, DAC_WRITE_REGA);
           hal_ltc2668_spi_update_dac(&hspi6, DAC_DAC13_ADDRESS);
@@ -310,7 +296,6 @@
           Illu_dbg_lock_msg("LCK:IQ_SET_STATE phase_voltage");
           is_lock_coarse =1;
         }
-        // xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
       }
       xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
       if (command.iq0_state.has_run) {
@@ -330,7 +315,6 @@
     break;
 
   case CommandName_EDFA_SET_STATE:
-    // strcpy(reply.error.message, "EDFA_SET_STATE");
     reply.error.has_message = 1;
 
     if (!command.has_edfa_state) {
@@ -343,7 +327,6 @@
   	break;
 
   case CommandName_DBG_GET_FW_SHA:
-  // strcpy(reply.error.message, "DBG_GET_FW_SHA");
     reply.error.has_message = 1;
 
     reply.name = CommandName_DBG_GET_FW_SHA;
@@ -352,14 +335,12 @@
     for (size_t i = 0; i < 7; i++) {
       reply.dbg_info.fw_sha[i] = sha[i];
     }
-    // reply.dbg_info.fw_sha[7] = '\0';
 
     xmit_proto_buff(&reply, Com3TxBuffer, TXBUFFERSIZE, huart);
     Illu_dbg_cmd_msg("CMD:DBG_GET_FW_SHA");
   	break;
 
   case CommandName_FPGA_SET_STATE:
-    // strcpy(reply.error.message, "FPGA_PIN_VAL");
     Illu_dbg_cmd_msg("CMD:FPGA_SET_STATE");
 
     reply.name = CommandName_FPGA_SET_STATE;
