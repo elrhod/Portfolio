@@ -1,4 +1,4 @@
-This Python module is here as part of a portfolio demonstration and will not work as a stand-alone application os used as a module.
+This Python module is here as part of a portfolio demonstration and will not work as a stand-alone application or when used as a module by itself.
 
 # Sysboard DAC ADC
 
