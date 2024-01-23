@@ -5,6 +5,8 @@ The tool was developed in C++ using the Boost Graph Library (GPL) and Program Op
 - Pre-processing: in the pre-processing stage data is extracted from the digital circuit using a TCL script and pre-processed;
 - Cycle-by-cycle error probability calculation: in this stage, the error probability is calculated cycle-by-cycle;
 - Post-processing: The error results are packed and stored in files;
+The user can also choose to run the tool using multiple processing cores. This is implemented using the C++ class std::threads.
+
 
 ## Pre-Processing
 Files [pre_processing.cpp](pre_processing.cpp) and [pre_processing.hpp](pre_processing.hpp) have the functions that do the circuit extraction and mapping to a graph structure. The circuit information is extracted and pre-processed to gather important circuit characteristics that will accelerate the circuit cycle-by-cycle simulation in the next steps like, for instance, getting the combinational cones of the circuit.
