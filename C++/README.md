@@ -16,6 +16,6 @@ The cycle-by-cycle calculation is done at the [scape.cpp](scape.cpp) and header 
 The post-processing steps are executed by functions that are in the [pos_processing.cpp](pos_processing.cpp) and header [pos_processing.hpp](pos_processing.hpp). These files hold the functions that perform report data update and generation.
 
 ## Debugging and Types
-The [debug.cpp](debug.cpp) and [debug.hpp](debug.hpp) files have functions that allow the observability of the error propagation cycle-by-cycle by printing the signals and its error probability in an ordered and visual way. Finally, the [types.cpp](types.hpp) have all the types and data structure definitions that are used throughout the code.
+The [debug.cpp](debug.cpp) and [debug.hpp](debug.hpp) files have functions that allow the observability of the error propagation cycle-by-cycle by printing the signals and its error probability in an ordered and visual way. Finally, the [types.hpp](types.hpp) have all the types and data structure definitions that are used throughout the code.
 
 
