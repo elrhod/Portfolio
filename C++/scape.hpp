@@ -5,8 +5,8 @@
  */
 
 #ifndef SCAPEHPP
-    #define SCAPEHPP
-    #include "types.hpp"
+#define SCAPEHPP
+#include "types.hpp"
 
 /* Function Prototypes */
 /**
@@ -23,8 +23,7 @@
   * @param  correlated_value    Vector of correlation values
   *
   */
-    void set_out_edge_error_probability_values (MyGraphType& G, int vertex, double p0wrong, double p1wrong, double p0correct, 
-        double p1correct, string st , map<string,errorProbabilityType> omap, vector<pair<double,errorValuesModel>> correlated_value);
+void set_out_edge_error_probability_values (MyGraphType& G, int vertex, double p0wrong, double p1wrong, double p0correct, double p1correct, string st , map<string,errorProbabilityType> omap, vector<pair<double,errorValuesModel>> correlated_value);
 
 /**
   * @brief                    Calculates the probability of a look-up table to filter a fault.   
@@ -33,7 +32,7 @@
   *
   * @return The calculate probability of the lut to filter faults.
   */
-    vector<float> calc_lut_filter_probability (unsigned long long int func, int lut_size);
+vector<float> calc_lut_filter_probability (unsigned long long int func, int lut_size);
 
 /**
   * @brief                      Used to set the same value for all the graph for a given attribute name. 
@@ -43,7 +42,7 @@
   * @param  attribute_name      The attribute name that is being set.
   *
   */ 
-    void set_all_edges_attribute (MyGraphType& G, anyType value, enum EdgeAtribTypeEnum attribute_name);
+void set_all_edges_attribute (MyGraphType& G, anyType value, enum EdgeAtribTypeEnum attribute_name);
 
 /**
   * @brief                      Initialize the error probability. This is used to start the fault injection process
@@ -52,7 +51,7 @@
   * @param  error_source        The error source number that is being initialized.              
   *
   */
-    void error_prob_init (MyGraphType& G, int error_source);
+void error_prob_init (MyGraphType& G, int error_source);
 
 /**
   * @brief                      Calculates the output probability of error.
@@ -64,8 +63,7 @@
   * @param  current_cycle       Number of the current running cycle.
   *            
   */
-    void calculate_output_probabilities(MyGraphType& G, int error_source, vector<int> faulty_list, correlationInfo correlation_Info, 
-        int current_cycle);
+void calculate_output_probabilities(MyGraphType& G, int error_source, vector<int> faulty_list, correlationInfo correlation_Info, int current_cycle);
 
  /**
   * @brief                      Run the error propagation for the combinational part 
@@ -79,8 +77,7 @@
   * @param  current_cycle                   Number of the current running cycle.
   *
   */ 
-    void run_combinational_propagation(MyGraphType& G, int error_source, circuitInfo cif, bool is_first, vector<int> current_sequential_fp_sources, 
-        correlationInfo correlation_Info, int current_cycle);
+void run_combinational_propagation(MyGraphType& G, int error_source, circuitInfo cif, bool is_first, vector<int> current_sequential_fp_sources, correlationInfo correlation_Info, int current_cycle);
 
 /**
   * @brief                      Run the error propagation for the sequential part 
@@ -92,7 +89,7 @@
   *
   * @return                     Current probability of faults for sequential components.
   */
-    vector<int> run_sequential_propagation(MyGraphType& G, int error_source, vector<int> sequential_list, correlationInfo correlation_Info);
+vector<int> run_sequential_propagation(MyGraphType& G, int error_source, vector<int> sequential_list, correlationInfo correlation_Info);
 
 /**
   * @brief                      Run the error propagation 
@@ -106,8 +103,7 @@
   * @param  correlation_Info                Correlation information for the error source with the reconvergence path and correlated sources.
   *
   */
-void run_error_propagation(MyGraphType& G, int error_source, circuitInfo cif, map<int, vector<errorProbabilityType>>& report, 
-    vector<int> watch_list, programOptions ins, correlationInfo correlation_Info);
+void run_error_propagation(MyGraphType& G, int error_source, circuitInfo cif, map<int, vector<errorProbabilityType>>& report, vector<int> watch_list, programOptions ins, correlationInfo correlation_Info);
 
 /**
   * @brief                      Initializes the components that have a constant probability of error propagation. 
