@@ -5,10 +5,10 @@
  */
 
 #ifndef SCAPEUTILSHPP
-    #define SCAPEUTILSHPP
+#define SCAPEUTILSHPP
 
-	#include "types.hpp"
-	#include "debug.hpp"
+#include "types.hpp"
+#include "debug.hpp"
 	
 /**
   * @brief          Evaluates look-up table function.
@@ -21,7 +21,7 @@
   * @return 		The function evaluation result.
   *
   */
-	double eval_function (MyGraphType& G, int elem, string func, int lutsize); 
+double eval_function (MyGraphType& G, int elem, string func, int lutsize); 
 
 /**
   * @brief          Evaluates the correlated function.
@@ -34,7 +34,7 @@
   * @return 		The function evaluation result.
   *
   */
-	double eval_correlated_function (MyGraphType& G, int elem, string func, int lutsize);
+double eval_correlated_function (MyGraphType& G, int elem, string func, int lutsize);
 
 /**
   * @brief          	Find Look-up tables that have the same input.
@@ -45,7 +45,7 @@
   * @return 			Vector with the look-up table numbers that have the same inputs.
   *
   */
-	vector<pair<int, int>> find_same_input_luts(MyGraphType& G, map<int,vector<int>> lutsize_map);
+vector<pair<int, int>> find_same_input_luts(MyGraphType& G, map<int,vector<int>> lutsize_map);
 
 /**
   * @brief          			Get the probability map and checks if they are all valid.
@@ -59,8 +59,7 @@
   * @return 		True if all probabilities are valid and false if not.
   *
   */
-	bool get_input_fp_map (MyGraphType& G, int vertex, map <string, errorProbabilityType>& imap, int out_flag, 
-		map <string,vector<pair<double,errorValuesModel>>>& correlated_value);
+bool get_input_fp_map (MyGraphType& G, int vertex, map <string, errorProbabilityType>& imap, int out_flag, map <string,vector<pair<double,errorValuesModel>>>& correlated_value);
 
 /**
   * @brief          	Converts a primitive string to its enumeration correspondent.
@@ -69,7 +68,7 @@
   * @return				Returns the enumeration correspondent to the primitive.
   * 
   */  
-	enum PrimEnum convert_to_enum (string st);
+enum PrimEnum convert_to_enum (string st);
 
 /**
   * @brief          	Calculates the Multiplexer error probability.
@@ -79,7 +78,7 @@
   * @param  out       	Resultant error probability.
   * 
   */  
-	void calc_mux_error_probability (errorProbabilityType i0, errorProbabilityType i1, errorProbabilityType sel, errorProbabilityType& out );
+void calc_mux_error_probability (errorProbabilityType i0, errorProbabilityType i1, errorProbabilityType sel, errorProbabilityType& out );
 
 /**
   * @brief          	Calculates the Exclusive Or error probability.
@@ -88,7 +87,7 @@
   * @param  out       	Resultant error probability.
   * 
   */
-	void calc_xor_error_probability (errorProbabilityType i0, errorProbabilityType i1, errorProbabilityType& out );
+void calc_xor_error_probability (errorProbabilityType i0, errorProbabilityType i1, errorProbabilityType& out );
 
 /**
   * @brief          		Try to find a path between source and target.
@@ -98,7 +97,7 @@
   * @return         	Resultant true if there is a path and false if there is not.
   * 
   */	
-	bool there_is_path(MyGraphType& G, int error_source, int target);
+bool there_is_path(MyGraphType& G, int error_source, int target);
 
 /**
   * @brief          			Merge two correlated values.
@@ -107,7 +106,7 @@
   * @param  merged		       	Merged correlated value.
   * 
   */
-	void merge_correlated_inputs(vector<pair<double,errorValuesModel>> correlated_value1, vector<pair<double,errorValuesModel>> correlated_value2, vector<double>& merged);
+void merge_correlated_inputs(vector<pair<double,errorValuesModel>> correlated_value1, vector<pair<double,errorValuesModel>> correlated_value2, vector<double>& merged);
 
 /**
   * @brief          				Calculates correlated probability.
@@ -122,8 +121,7 @@
   * @param  convergent_destination	Map with convergent destination.
   * 
   */
-	void calculate_correlated_probability(MyGraphType& G, int elem, double& p0w, double& p1w, double& p0c, double& p1c, vector<double> merged_correlation,
-    	map<int,vector<string>> convergent_destination);
+void calculate_correlated_probability(MyGraphType& G, int elem, double& p0w, double& p1w, double& p0c, double& p1c, vector<double> merged_correlation,map<int,vector<string>> convergent_destination);
 
 /**
   * @brief          	Generates the correlated look-up table not minimized probability function.
@@ -134,7 +132,7 @@
   * 
   * @return 			Vector with correlated LUT probability function not minimized.
   */
-	vector<string> gen_correlated_lut_prob_func_not_minimized (long long int func, int lutsize);
+vector<string> gen_correlated_lut_prob_func_not_minimized (long long int func, int lutsize);
 
 /**
   * @brief          	Returns the vector with the first lut in the path
@@ -144,7 +142,7 @@
   * 
   * @return 			Returned path that found a LUT.
   */
-	vertexDescType get_first_lut_in_vector(MyGraphType G, vector<vertexDescType> path);
+vertexDescType get_first_lut_in_vector(MyGraphType G, vector<vertexDescType> path);
 
 /**
   * @brief          							Sets the cycle that there is activation of the correlation
@@ -155,6 +153,6 @@
   * @param  dest								Destination element.
   * 
   */
-	void set_cycle_of_correlation_activation(MyGraphType G, vector<vertexDescType> path, map<vertexDescType,int>& cycle_of_correlation_activation, vertexDescType dest); 
+void set_cycle_of_correlation_activation(MyGraphType G, vector<vertexDescType> path, map<vertexDescType,int>& cycle_of_correlation_activation, vertexDescType dest); 
 
 #endif
