@@ -5,10 +5,10 @@
  */
 
 #ifndef TOOLSHPP
-    #define TOOLSHPP
+#define TOOLSHPP
 
-	#include <string>
-	#include <vector>
+#include <string>
+#include <vector>
 
 /**
   * @brief          Counts the frequency of a given pattern.
@@ -18,7 +18,7 @@
   * @return 		Total number of times the pattern was found in str.
   *
   */
-	int countFreq (string pattern, string str);
+int countFreq (string pattern, string str);
 
 /**
   * @brief          Converts a decimal number to a binary number
@@ -28,7 +28,7 @@
   * @return 		Resulting converted bits.
   *
   */	
-	vector<int> decToBinary (unsigned long long int n, int bits);
+vector<int> decToBinary (unsigned long long int n, int bits);
 
 /**
   * @brief          Splits a line into a vector of strings
@@ -37,13 +37,13 @@
   * @return 		Resulting vector of strings.
   *
   */	
-	vector<string> split_string (string line); 
+vector<string> split_string (string line); 
 
 /**
   * @brief          A fixed time delay implementation
   *
   */
-	void call_delay();
+void call_delay();
 
 /**
   * @brief          			Remove elements from a list present at another list.
@@ -51,7 +51,7 @@
   * @param  remove_if_in_here	Remove if elements are present here.
   *
   */	
-	void remove_if_in_list (vector<int>& list, vector<int> remove_if_in_here);
+void remove_if_in_list (vector<int>& list, vector<int> remove_if_in_here);
 
 /**
   * @brief      Makes a union of two vectors, A and B.
@@ -61,13 +61,13 @@
   * @result		Resulting union.
   * 
   */
-	vector<int> union_of_vectors (vector<int> A, vector<int> B); 
+vector<int> union_of_vectors (vector<int> A, vector<int> B); 
 
 /**
   * @brief      	Remove (delete) file.
   * @param  input	input file name to be deleted.
   * 
   */
-	void remove_file (string input);
+void remove_file (string input);
 
 #endif
