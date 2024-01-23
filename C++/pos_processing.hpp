@@ -4,10 +4,10 @@
   * @author Eduardo Luis Rhod 
  */
  
- #ifndef POSPROCESSINGHPP
-    #define POSPROCESSINGHPP
+#ifndef POSPROCESSINGHPP
+#define POSPROCESSINGHPP
 	
-	#include "types.hpp"
+#include "types.hpp"
 	
 /**
   * @brief                      Update the report.
@@ -19,7 +19,7 @@
   * @param  report             	Structure with the metadata of the report.
   *
   */
-	void update_report (MyGraphType G, vector<int> outPorts, int error_source, int cycle, map<int,vector<errorProbabilityType>>& report);
+void update_report (MyGraphType G, vector<int> outPorts, int error_source, int cycle, map<int,vector<errorProbabilityType>>& report);
 
 /**
   * @brief                      Generate the output file with the report.
@@ -28,6 +28,6 @@
   * @param  report             	Structure with the metadata of the report.
   *
   */
-	void generate_report (string error_source, string output, map< int, vector<errorProbabilityType> > report);
+void generate_report (string error_source, string output, map< int, vector<errorProbabilityType> > report);
 
 #endif
